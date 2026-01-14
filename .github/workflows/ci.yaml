@@ -31,7 +31,7 @@ jobs:
       - name: Determine release notes
         id: release-notes
         run: |
-          echo "release-notes=This release include something new." >> $GITHUB_OUTPUT
+          echo "release-notes=Update to support .NET 1.0.102 change in sln/slx default." >> $GITHUB_OUTPUT
 
   build:
     name: Build
