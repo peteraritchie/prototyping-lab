@@ -24,7 +24,7 @@ jobs:
     name: Determine Release Notes
     runs-on: ubuntu-latest
     outputs:
-      release-notes: ${{ steps.release-notes }}
+      release-notes: ${{ steps.release-notes.outputs.release-notes }}
     permissions:
       contents: write  # to be able to publish a GitHub release
     steps:
