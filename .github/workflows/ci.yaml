@@ -19,6 +19,10 @@ on:
       - "src/Tests/**"
   workflow_dispatch:
 
+env:
+    username: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
+    password: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
+
 jobs:
   build:
     name: Build
