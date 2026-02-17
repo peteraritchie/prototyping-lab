@@ -54,7 +54,9 @@ jobs:
           - VersionSuffix
           As well as InternalsVisibleTo AssemblyAttribute/SupressMessageAttribute.
           "
+          echo $NOTES
           NOTES_ENCODED=$(echo -n "$NOTES" | base64)
+          echo "release-notes=$NOTES_ENCODED"
           echo "release-notes=$NOTES_ENCODED" >> $GITHUB_OUTPUT
 
       - name: Use release-notes
