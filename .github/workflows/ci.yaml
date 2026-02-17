@@ -58,7 +58,7 @@ jobs:
           - VersionSuffix
           As well as InternalsVisibleTo AssemblyAttribute/SupressMessageAttribute.
           "
-          echo "$releaseNotes" >> $GITHUB_OUTPUT
+          echo "$releaseNotes"
 
       - name: Restore
         run: dotnet restore src
