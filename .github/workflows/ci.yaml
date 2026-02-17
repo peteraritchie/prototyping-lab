@@ -36,13 +36,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v5
-        with:
-          dotnet-version: 10.0.101
       - name: release-notes
         run: |
-          releaseNotes="Added Edit-DotnetProject Cmdlet supporting the following properties:
+          NOTES="Added Edit-DotnetProject Cmdlet supporting the following properties:
           - AppendTargetFrameworkToOutputPath
           - AssemblyName
           - GenerateDocumentationFile
@@ -58,8 +54,20 @@ jobs:
           - VersionSuffix
           As well as InternalsVisibleTo AssemblyAttribute/SupressMessageAttribute.
           "
-          echo "$releaseNotes"
+          NOTES_ENCODED=$(echo -n "$NOTES" | base64)
+          echo "release-notes=$NOTES_ENCODED" >> $GITHUB_OUTPUT
 
+      - name: Use release-notes
+        id: use-relese-notes
+        run: |
+            NOTES_ENCODED=${{steps.release-notes.outputs.release-notes }}"
+            NOTES=$(echo "$NOTES_ENCODED" | base64 --decode)
+            echo "The release notes are: $NOTES"
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.101
       - name: Restore
         run: dotnet restore src
 
