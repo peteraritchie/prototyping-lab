@@ -42,7 +42,7 @@ jobs:
           dotnet-version: 10.0.101
       - name: release-notes
         run: |
-          releaseNotes="release-notes=Added Edit-DotnetProject Cmdlet supporting the following properties:
+          releaseNotes="Added Edit-DotnetProject Cmdlet supporting the following properties:
           - AppendTargetFrameworkToOutputPath
           - AssemblyName
           - GenerateDocumentationFile
