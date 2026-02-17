@@ -37,7 +37,7 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Get release notes
-        id: relese-notes
+        id: release-notes
         run: |
           NOTES="Added Edit-DotnetProject Cmdlet supporting the following properties:
           - AppendTargetFrameworkToOutputPath
