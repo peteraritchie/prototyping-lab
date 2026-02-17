@@ -62,7 +62,7 @@ jobs:
       - name: Use release-notes
         id: use-relese-notes
         run: |
-            NOTES_ENCODED=${{steps.release-notes.outputs.release-notes }}"
+            NOTES_ENCODED="${{ steps.release-notes.outputs.release-notes }}"
             NOTES=$(echo "$NOTES_ENCODED" | base64 --decode)
             echo "The release notes are: $NOTES"
 
